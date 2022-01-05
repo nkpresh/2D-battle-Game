@@ -9,6 +9,8 @@ export enum TowerState{
 
 export enum SpawnState{
     idle,
-    walk,
-    attack
+    moving,
+    reachedEnemyTower,
+    closeToEnemy,
+    dead
 }
