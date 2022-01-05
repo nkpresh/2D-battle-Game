@@ -1,10 +1,11 @@
 
 import { _decorator, Component, Node } from 'cc';
+import { Tower } from '../Models/Tower';
 const { ccclass, property } = _decorator;
 
 @ccclass('TowerController')
 export class TowerController extends Component {
-
+    tower:Tower
     start () {
         
     }
@@ -12,4 +13,5 @@ export class TowerController extends Component {
     update (deltaTime: number) {
         
     }
+    
 }

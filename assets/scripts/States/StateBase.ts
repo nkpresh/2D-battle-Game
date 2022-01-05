@@ -4,7 +4,9 @@ const { ccclass, property } = _decorator;
 
 export enum TowerState{
     idle,
-    CloseToEnemy,
+    Attack,
+    spawnning,
+    destroyed
 }
 
 export enum SpawnState{
@@ -13,4 +15,9 @@ export enum SpawnState{
     reachedEnemyTower,
     closeToEnemy,
     dead
+}
+
+export enum PlayMode{
+    Player,
+    AI
 }
