@@ -1,6 +1,6 @@
 
 import { _decorator, Component, Node, resources, Prefab, instantiate, Enum } from 'cc';
-import { PlayMode, TowerState } from '../States/StateBase';
+import { PlayMode} from '../States/StateBase';
 import { SpawnBase } from './Spawns/SpawnBase';
 const { ccclass, property } = _decorator;
 
