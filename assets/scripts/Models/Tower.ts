@@ -1,6 +1,7 @@
 
-import { _decorator, Component, Node, resources, Prefab, instantiate, Enum } from 'cc';
-import { PlayMode} from '../States/Enums';
+import { _decorator, Component, Node, resources, Prefab, instantiate, Enum, UITransform, tween } from 'cc';
+import { BattleManager } from '../Managers/BattleManager';
+import { PlayMode, SpawnState} from '../States/Enums';
 import { SpawnBase } from './Spawns/SpawnBase';
 const { ccclass, property } = _decorator;
 
@@ -29,7 +30,15 @@ export class Tower extends Component {
 
     public CreateSpawn(spawn:SpawnBase) {
         resources.load(spawn.prefabLocation, Prefab, (err, spawnPrefab) => {
-            let newNode = instantiate(spawnPrefab);
+            let newNode:Node = instantiate(spawnPrefab);
+            BattleManager.instance.battleGround.node.addChild(newNode);
+            newNode.setWorldPosition(this.spawnInitialPos.worldPosition);
+
+            tween(newNode).call(() => {
+                newNode.getComponent(SpawnBase).spawnState = SpawnState.moving;
+                console.log(newNode.getComponent(SpawnBase).spawnState);
+            }).delay(0.5).start();
+
         });
 
     }

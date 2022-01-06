@@ -23,6 +23,7 @@ export class SpawnBase extends Component {
 
     start() {
         this.spawnState = SpawnState.idle;
+        console.log(this.spawnState);
         this.enemyTower = BattleManager.instance.aiTower.node;
         systemEvent.on(SystemEvent.EventType.KEY_DOWN, ((event:EventKeyboard) => {
             if (event.keyCode == KeyCode.KEY_A) {
@@ -31,7 +32,10 @@ export class SpawnBase extends Component {
         }),this)
     }
 
-    update (deltaTime: number) {
+    update(deltaTime: number) {
+        if (this.spawnState == SpawnState.moving) {
+            // console.log("toached")
+        }
         this.Move(deltaTime);
     }
 
@@ -43,8 +47,8 @@ export class SpawnBase extends Component {
             this.currentLocation = MoveTowards(this.currentLocation, this.targetLocation, this.movementSpeed * deltaTime);
             this.node.setWorldPosition(this.currentLocation);
             let dist = Vec3.distance(this.currentLocation, this.targetLocation);
-            if (dist<5) {
-                this.spawnState = SpawnState.idle;
+            if (dist<20) {
+                this.spawnState = SpawnState.reachedEnemyTower;
             }
         }
     }
