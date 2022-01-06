@@ -11,7 +11,7 @@ export class SpawnCard extends Component {
     start() {
         this.init();
         this.node.on('click', (() => {
-            BattleManager.instance.playerTower.CreateSpawn();
+            BattleManager.instance.playerTower.CreateSpawn(this.cyberSpawn);
         }), this.node);
     }
 

@@ -27,8 +27,10 @@ export class Tower extends Component {
         
     }
 
-    public CreateSpawn() {
-        // console.log(this.playerMode);
+    public CreateSpawn(spawn:SpawnBase) {
+        resources.load(spawn.prefabLocation, Prefab, (err, spawnPrefab) => {
+            let newNode = instantiate(spawnPrefab);
+        });
 
     }
 }

@@ -4692,7 +4692,7 @@
     "propertyPath": [
       "playerMode"
     ],
-    "value": 1
+    "value": 0
   },
   {
     "__type__": "cc.TargetInfo",
