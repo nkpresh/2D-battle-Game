@@ -1,7 +1,7 @@
 
 import { _decorator, Component, Node, Vec2, Vec3, systemEvent, System, SystemEvent, EventKeyboard, KeyCode } from 'cc';
 import { MoveTowards } from '../../Managers/Helper';
-import { SpawnState } from '../../States/StateBase';
+import { SpawnState } from '../../States/Enums';
 const { ccclass, property } = _decorator;
 
 @ccclass('SpawnBase')
