@@ -12,7 +12,7 @@ export class Tower extends Component {
     playerMode: PlayMode;
 
     @property(Node)
-    spawnInitialPos:Node
+    spawnInitialPos: Node;
 
     allSpawns: SpawnBase[] = new Array<SpawnBase>()
     
@@ -26,20 +26,5 @@ export class Tower extends Component {
 
     update(deltaTime:number) {
         
-    }
-
-    public CreateSpawn(spawn:SpawnBase) {
-        resources.load(spawn.prefabLocation, Prefab, (err, spawnPrefab) => {
-            let newNode:Node = instantiate(spawnPrefab);
-            BattleManager.instance.battleGround.node.addChild(newNode);
-            newNode.setWorldPosition(this.spawnInitialPos.worldPosition);
-
-            tween(newNode).call(() => {
-                newNode.getComponent(SpawnBase).spawnState = SpawnState.moving;
-                console.log(newNode.getComponent(SpawnBase).spawnState);
-            }).delay(0.5).start();
-
-        });
-
     }
 }

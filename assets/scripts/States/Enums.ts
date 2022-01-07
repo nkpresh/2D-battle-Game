@@ -11,6 +11,6 @@ export enum SpawnState{
 }
 
 export enum PlayMode{
+    AI,
     Player,
-    AI
 }

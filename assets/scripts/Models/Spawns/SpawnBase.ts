@@ -1,8 +1,9 @@
 
-import { _decorator, Component, Node, Vec2, Vec3, systemEvent, System, SystemEvent, EventKeyboard, KeyCode } from 'cc';
+import { _decorator, Component, Node, Vec2, Vec3, systemEvent, System, SystemEvent, EventKeyboard, KeyCode, resources, Prefab, instantiate, tween } from 'cc';
 import { BattleManager } from '../../Managers/BattleManager';
 import { MoveTowards } from '../../Managers/Helper';
-import { SpawnState } from '../../States/Enums';
+import { PlayMode, SpawnState } from '../../States/Enums';
+import { Tower } from '../Tower';
 const { ccclass, property } = _decorator;
 
 @ccclass('SpawnBase')
@@ -16,40 +17,41 @@ export class SpawnBase extends Component {
     currentLocation: Vec3;
     targetLocation: Vec3;
 
-    // @property(Node)
-    enemyTower: Node;
+    playMode: PlayMode;
+    
+    enemyTower: Tower;
 
     spawnState: SpawnState;
 
     start() {
-        this.spawnState = SpawnState.idle;
-        console.log(this.spawnState);
-        this.enemyTower = BattleManager.instance.aiTower.node;
-        systemEvent.on(SystemEvent.EventType.KEY_DOWN, ((event:EventKeyboard) => {
-            if (event.keyCode == KeyCode.KEY_A) {
-                this.spawnState = SpawnState.moving;
-            }
-        }),this)
+        
     }
 
     update(deltaTime: number) {
         if (this.spawnState == SpawnState.moving) {
-            // console.log("toached")
+            this.Move(deltaTime);
         }
-        this.Move(deltaTime);
+        
     }
 
-    Move(deltaTime:number) {
-        if (this.spawnState == SpawnState.moving) {
-            this.startLocation = this.node.worldPosition.clone();
-            this.currentLocation = this.node.worldPosition.clone();
-            this.targetLocation = this.enemyTower.worldPosition.clone();
-            this.currentLocation = MoveTowards(this.currentLocation, this.targetLocation, this.movementSpeed * deltaTime);
-            this.node.setWorldPosition(this.currentLocation);
-            let dist = Vec3.distance(this.currentLocation, this.targetLocation);
-            if (dist<20) {
-                this.spawnState = SpawnState.reachedEnemyTower;
-            }
+    Move(deltaTime: number) {
+        this.startLocation = this.node.worldPosition.clone();
+        this.currentLocation = this.node.worldPosition.clone();
+        this.targetLocation = this.enemyTower.spawnInitialPos.worldPosition.clone();
+        this.currentLocation = MoveTowards(this.currentLocation, this.targetLocation, this.movementSpeed * deltaTime);
+        this.node.setWorldPosition(this.currentLocation);
+        let dist = Vec3.distance(this.currentLocation, this.targetLocation);
+        if (dist<20) {
+            this.spawnState = SpawnState.reachedEnemyTower;
         }
+
     }
+
+    MoveToTarget(targetPos: Vec3) {
+        if (this.spawnState == SpawnState.moving) {
+            this.targetLocation = targetPos;
+        }
+        
+    }
+
 }
