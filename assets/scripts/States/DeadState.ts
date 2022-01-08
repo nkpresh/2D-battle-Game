@@ -3,7 +3,7 @@ import { SpawnBaseChar } from '../Managers/SpawnBaseChar';
 import { ISpawnState } from './ISpawnState';
 const { ccclass, property } = _decorator;
 
-export class IdleState implements ISpawnState{
+export class DeadState implements ISpawnState{
 
     EnterState(spawn: SpawnBaseChar): void {
         throw new Error('Method not implemented.');

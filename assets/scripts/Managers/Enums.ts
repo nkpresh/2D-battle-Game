@@ -5,8 +5,7 @@ const { ccclass, property } = _decorator;
 export enum SpawnState{
     idle,
     moving,
-    reachedEnemyTower,
-    closeToEnemy,
+    attacking,
     dead
 }
 
