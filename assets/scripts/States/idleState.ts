@@ -4,9 +4,10 @@ import { ISpawnState } from './ISpawnState';
 const { ccclass, property } = _decorator;
 
 export class IdleState implements ISpawnState{
+    
 
     EnterState(spawn: SpawnBase): void {
-        
+        spawn.currentState=this
     }
     UpdateState(spawn: SpawnBase): void {
         
@@ -15,4 +16,6 @@ export class IdleState implements ISpawnState{
         
     }
 
+    SwitchState(spawn: SpawnBase, newState: ISpawnState): void {
+    }
 }

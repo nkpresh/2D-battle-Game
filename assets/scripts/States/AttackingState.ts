@@ -6,14 +6,18 @@ const { ccclass, property } = _decorator;
 export class AttackingState implements ISpawnState{
 
     EnterState(spawn: SpawnBase): void {
-        
+        spawn.currentState = this;
     }
     UpdateState(spawn: SpawnBase): void {
         
     }
+
     OnCollision(spawn: SpawnBase): void {
         
     }
     
+    SwitchState(spawn: SpawnBase, newState: ISpawnState): void {
+        // spawn.cur
+    }
 
 }

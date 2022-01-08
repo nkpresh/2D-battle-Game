@@ -1,5 +1,7 @@
 
 import { _decorator, Component, Node, Sprite } from 'cc';
+import { SpawnBase } from '../Spawns/SpawnBase';
+import { PlayMode } from './Enums';
 
 const { ccclass, property } = _decorator;
 
@@ -9,13 +11,11 @@ export class BattleManager extends Component {
     // @property(Sprite)
     // battleGround: Sprite;
 
-    // @property(Tower)
-    // playerTower: Tower;
+    @property(Node)
+    playerShip: Node;
 
-    // @property(Tower)
-    // aiTower: Tower;
-
-    // spawnHandler: SpawnHandler;
+    @property(Node)
+    aiShip: Node;
 
     static instance: BattleManager;
 
@@ -30,6 +30,15 @@ export class BattleManager extends Component {
     }
     update (deltaTime: number) {
         
+    }
+
+    CreateTarget(spawn: SpawnBase) {
+        if (spawn.spawnControl == PlayMode.Player) {
+            spawn.targetLocation = this.aiShip.worldPosition;
+        } else if (spawn.spawnControl == PlayMode.AI) {
+            spawn.targetLocation = this.playerShip.worldPosition;
+        }
+        spawn.movingState.EnterState(spawn);
     }
     
 }
