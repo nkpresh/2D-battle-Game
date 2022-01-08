@@ -1,23 +1,21 @@
 
 import { _decorator, Component, Node, Sprite } from 'cc';
-import { SpawnBase } from '../Models/Spawns/SpawnBase';
-import { Tower } from '../Models/Tower';
-import { SpawnHandler } from './SpawnHandler';
+
 const { ccclass, property } = _decorator;
 
 @ccclass('BattleManager')
 export class BattleManager extends Component {
 
-    @property(Sprite)
-    battleGround: Sprite;
+    // @property(Sprite)
+    // battleGround: Sprite;
 
-    @property(Tower)
-    playerTower: Tower;
+    // @property(Tower)
+    // playerTower: Tower;
 
-    @property(Tower)
-    aiTower: Tower;
+    // @property(Tower)
+    // aiTower: Tower;
 
-    spawnHandler: SpawnHandler;
+    // spawnHandler: SpawnHandler;
 
     static instance: BattleManager;
 
@@ -26,8 +24,8 @@ export class BattleManager extends Component {
     }
 
     init() {
-        BattleManager.instance = this;
-        this.spawnHandler = new SpawnHandler();
+        // BattleManager.instance = this;
+        // this.spawnHandler = new SpawnHandler();
 
     }
     update (deltaTime: number) {

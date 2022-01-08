@@ -4,15 +4,12 @@ import { BattleManager } from '../../Managers/BattleManager';
 import { MoveTowards } from '../../Managers/Helper';
 import { PlayMode, SpawnState } from '../../Managers/Enums';
 import { ISpawnState } from '../../States/ISpawnState';
-import { Tower } from '../Tower';
 const { ccclass, property } = _decorator;
 
 @ccclass('SpawnBase')
 export class SpawnBase extends Component {
 
-    maxHp: number;
-    minHp: number;
-    currentHp: number;
+
 
     prefabLocation: string= "Prefabs/Spawns/cyberElephant";
     movementSpeed: number = 200;
@@ -24,8 +21,6 @@ export class SpawnBase extends Component {
 
     playMode: PlayMode;
     
-    enemyTower: Tower;
-
     spawnState: SpawnState;
 
     start() {
