@@ -36,7 +36,6 @@ export class SpawnHandler{
             spawn.enemyTower=BattleManager.instance.playerTower
         }
         console.log(spawn.enemyTower);
-        // console.log(BattleManager.instance.aiTower);
     }
     
 }

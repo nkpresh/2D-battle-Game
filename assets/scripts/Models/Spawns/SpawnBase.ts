@@ -9,10 +9,12 @@ const { ccclass, property } = _decorator;
 @ccclass('SpawnBase')
 export class SpawnBase extends Component {
 
+    maxHp: number;
+    minHp: number;
+    currentHp: number;
+
     prefabLocation: string= "Prefabs/Spawns/cyberElephant";
-
     movementSpeed: number = 200;
-
     startLocation: Vec3;
     currentLocation: Vec3;
     targetLocation: Vec3;
@@ -54,4 +56,13 @@ export class SpawnBase extends Component {
         
     }
 
+    AttackEnemy(enemySpawn: SpawnBase) {
+        
+    }
+
+    AttackTower() {
+        
+    }
+
+    
 }
