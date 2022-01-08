@@ -1,13 +1,14 @@
 
 import { _decorator, Component, Node } from 'cc';
-import { SpawnBase } from '../../Managers/SpawnBase';
+import { SpawnBase } from './SpawnBase';
 const { ccclass, property } = _decorator;
 
 @ccclass('CyberElephant')
 export class CyberElephant extends SpawnBase {
 
     start() {
-        console.log("child");
+        this.init();
+        console.log(this.currentState)
     }
 
     update (deltaTime: number) {

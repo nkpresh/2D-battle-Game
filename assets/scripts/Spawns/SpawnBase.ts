@@ -20,10 +20,13 @@ export class SpawnBase extends Component{
     movingState: ISpawnState = new MovingState();
     attackingState: ISpawnState = new AttackingState();
     deadState: ISpawnState = new DeadState();
+    
     start() {
+        this.init();
+    }
+    init() {
         this.currentState = this.idleState;
         this.currentState.EnterState(this);
-        
     }
 
     update(deltaTime: number) {
