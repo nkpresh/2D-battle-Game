@@ -2,7 +2,8 @@
 import { _decorator, Component, Node, Vec2, Vec3, systemEvent, System, SystemEvent, EventKeyboard, KeyCode, resources, Prefab, instantiate, tween } from 'cc';
 import { BattleManager } from '../../Managers/BattleManager';
 import { MoveTowards } from '../../Managers/Helper';
-import { PlayMode, SpawnState } from '../../States/Enums';
+import { PlayMode, SpawnState } from '../../Managers/Enums';
+import { ISpawnState } from '../../States/ISpawnState';
 import { Tower } from '../Tower';
 const { ccclass, property } = _decorator;
 
@@ -18,6 +19,8 @@ export class SpawnBase extends Component {
     startLocation: Vec3;
     currentLocation: Vec3;
     targetLocation: Vec3;
+
+    currentState: ISpawnState;
 
     playMode: PlayMode;
     

@@ -1,7 +1,7 @@
 
 import { _decorator, Component, Node, resources, Prefab, instantiate, Enum, UITransform, tween } from 'cc';
 import { BattleManager } from '../Managers/BattleManager';
-import { PlayMode, SpawnState} from '../States/Enums';
+import { PlayMode, SpawnState} from '../Managers/Enums';
 import { SpawnBase } from './Spawns/SpawnBase';
 const { ccclass, property } = _decorator;
 

@@ -2,7 +2,7 @@
 import { _decorator, Component, Node, Button, Vec3 } from 'cc';
 import { BattleManager } from '../Managers/BattleManager';
 import { SpawnBase } from '../Models/Spawns/SpawnBase';
-import { PlayMode } from '../States/Enums';
+import { PlayMode } from '../Managers/Enums';
 const { ccclass, property } = _decorator;
 
 @ccclass('SpawnCard')
