@@ -8,16 +8,18 @@ import { MovingState } from '../States/MovingState';
 const { ccclass, property } = _decorator;
 
 //this is my Context
-@ccclass('SpawnStateHandler')
-export class SpawnBaseChar extends Component{
+@ccclass('SpawnBase')
+export class SpawnBase extends Component{
+
+    maxHp: number;
+    minHp: number;
+    currentHp: number;
 
     currentState: ISpawnState;
     idleState: ISpawnState = new IdleState();
     movingState: ISpawnState = new MovingState();
     attackingState: ISpawnState = new AttackingState();
     deadState: ISpawnState = new DeadState();
-
-    cybderSpawn
     start() {
         this.currentState = this.idleState;
         this.currentState.EnterState(this);

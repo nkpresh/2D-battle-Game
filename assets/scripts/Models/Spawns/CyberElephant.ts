@@ -1,12 +1,12 @@
 
 import { _decorator, Component, Node } from 'cc';
-import { SpawnBase } from './SpawnBase';
+import { SpawnBase } from '../../Managers/SpawnBase';
 const { ccclass, property } = _decorator;
 
 @ccclass('CyberElephant')
 export class CyberElephant extends SpawnBase {
 
-    start () {
+    start() {
         console.log("child");
     }
 

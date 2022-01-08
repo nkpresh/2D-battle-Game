@@ -1,17 +1,17 @@
 import { _decorator, Component, Node } from 'cc';
-import { SpawnBaseChar } from '../Managers/SpawnBaseChar';
+import { SpawnBase } from '../Managers/SpawnBase';
 import { ISpawnState } from './ISpawnState';
 const { ccclass, property } = _decorator;
 
 export class MovingState implements ISpawnState{
 
-    EnterState(spawn: SpawnBaseChar): void {
+    EnterState(spawn: SpawnBase): void {
         throw new Error('Method not implemented.');
     }
-    UpdateState(spawn: SpawnBaseChar): void {
+    UpdateState(spawn: SpawnBase): void {
         throw new Error('Method not implemented.');
     }
-    OnCollision(spawn: SpawnBaseChar): void {
+    OnCollision(spawn: SpawnBase): void {
         throw new Error('Method not implemented.');
     }
 }
