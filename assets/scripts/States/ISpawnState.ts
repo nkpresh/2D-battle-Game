@@ -4,9 +4,16 @@ import { SpawnBase } from '../Spawns/SpawnBase';
 const { ccclass, property } = _decorator;
 
 //this is my abstract state
-export interface ISpawnState {
-    EnterState(spawn:SpawnBase): void;
-    UpdateState(spawn:SpawnBase): void;
-    OnCollision(spawn: SpawnBase): void;
-    SwitchState(spawn: SpawnBase, newState: ISpawnState): void;
+export abstract class ISpawnState {
+    
+    EnterState(spawn: SpawnBase) {
+        spawn.currentState = this
+    }
+    abstract UpdateState(spawn:SpawnBase);
+    abstract OnCollision(spawn: SpawnBase);
+    SwitchState(spawn: SpawnBase, newState: ISpawnState) {
+        newState.EnterState(spawn);
+    }
+} {
+    
 }

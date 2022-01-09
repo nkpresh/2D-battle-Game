@@ -43,8 +43,8 @@ export class SpawnBase extends Component{
         this.init();
     }
     init() {
-        this.currentState = this.idleState;
-        this.currentState.EnterState(this);
+        this.movingState.EnterState(this);
+        this.movingState.UpdateState(this);
     }
 
     update(deltaTime: number) {
@@ -59,7 +59,7 @@ export class SpawnBase extends Component{
         this.node.setWorldPosition(this.currentLocation);
         let dist = Vec3.distance(this.currentLocation, this.targetLocation);
         if (dist<20) {
-            
+            this.currentState.SwitchState(this,this.attackingState)
         }
 
     }
@@ -73,5 +73,9 @@ export class SpawnBase extends Component{
             return;
         }
         this.targetLocation = targetPos.clone();
+    }
+
+    ReduceHealth(reductionRate:number) {
+        
     }
 }

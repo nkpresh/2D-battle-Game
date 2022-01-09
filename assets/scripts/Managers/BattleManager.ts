@@ -24,9 +24,7 @@ export class BattleManager extends Component {
     }
 
     init() {
-        // BattleManager.instance = this;
-        // this.spawnHandler = new SpawnHandler();
-
+        BattleManager.instance = this;
     }
     update (deltaTime: number) {
         
@@ -38,7 +36,7 @@ export class BattleManager extends Component {
         } else if (spawn.spawnControl == PlayMode.AI) {
             spawn.targetLocation = this.playerShip.worldPosition;
         }
-        spawn.movingState.EnterState(spawn);
+        // spawn.movingState.EnterState(spawn);
     }
     
 }

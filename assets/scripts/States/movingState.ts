@@ -1,21 +1,16 @@
 import { _decorator, Component, Node } from 'cc';
+import { BattleManager } from '../Managers/BattleManager';
 import { SpawnBase } from '../Spawns/SpawnBase';
 import { ISpawnState } from './ISpawnState';
 const { ccclass, property } = _decorator;
 
-export class MovingState implements ISpawnState{
+export class MovingState extends ISpawnState{
 
-    EnterState(spawn: SpawnBase): void {
-        spawn.currentState = this;
+    UpdateState(spawn: SpawnBase) {
+        BattleManager.instance.CreateTarget(spawn);
+        spawn.MoveToward(spawn.targetLocation)
     }
-    UpdateState(spawn: SpawnBase): void {
-        // spawn.MoveToward(s)
-    }
-    OnCollision(spawn: SpawnBase): void {
-        
-    }
-
-    SwitchState(spawn: SpawnBase, newState: ISpawnState): void {
+    OnCollision(spawn: SpawnBase) {
         
     }
 }
