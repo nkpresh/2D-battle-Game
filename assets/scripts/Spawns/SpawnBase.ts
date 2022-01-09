@@ -1,5 +1,6 @@
 
 import { _decorator, Component, Node, resources, Prefab, instantiate, tween, Vec3, sp, Enum } from 'cc';
+import { HealthSystem } from '../HealthSystem';
 import { PlayMode, SpawnState } from '../Managers/Enums';
 import { MoveTowards } from '../Managers/Helper';
 import { AttackingState } from '../States/AttackingState';
@@ -16,6 +17,8 @@ export class SpawnBase extends Component{
 
     @property({ type: PlayMode })
     spawnControl: PlayMode;
+    
+    spawnHealth: HealthSystem = new HealthSystem();
 
     currentState: ISpawnState;
     idleState: ISpawnState = new IdleState();
@@ -69,5 +72,9 @@ export class SpawnBase extends Component{
             return;
         }
         this.targetLocation = targetPos.clone();
+    }
+
+    Attack(spawnToAttack) {
+        
     }
 }
