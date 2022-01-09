@@ -17,10 +17,6 @@ export class SpawnBase extends Component{
     @property({ type: PlayMode })
     spawnControl: PlayMode;
 
-    maxHp: number;
-    minHp: number;
-    currentHp: number;
-
     currentState: ISpawnState;
     idleState: ISpawnState = new IdleState();
     movingState: ISpawnState = new MovingState();
@@ -73,9 +69,5 @@ export class SpawnBase extends Component{
             return;
         }
         this.targetLocation = targetPos.clone();
-    }
-
-    ReduceHealth(reductionRate:number) {
-        
     }
 }
