@@ -5,5 +5,38 @@
       "width": 1250,
       "height": 720
     }
+  },
+  "physics": {
+    "collisionGroups": [
+      {
+        "index": 1,
+        "name": "Player"
+      },
+      {
+        "index": 2,
+        "name": "Ai"
+      },
+      {
+        "index": 3,
+        "name": "Tower"
+      },
+      {
+        "index": 4,
+        "name": "layer1"
+      },
+      {
+        "index": 5,
+        "name": "layer2"
+      }
+    ],
+    "collisionMatrix": {
+      "0": 0,
+      "1": 12,
+      "2": 10,
+      "3": 6,
+      "4": 0,
+      "5": 0
+    },
+    "maxSubSteps": 0
   }
 }

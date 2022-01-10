@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, resources, Prefab, instantiate, tween, Vec3, sp, Enum } from 'cc';
+import { _decorator, Component, Node, resources, Prefab, instantiate, tween, Vec3, sp, Enum, Contact2DType, BoxCollider2D, PolygonCollider2D, Skeleton, Collider2D, director } from 'cc';
 import { HealthSystem } from '../HealthSystem';
 import { PlayMode, SpawnState } from '../Managers/Enums';
 import { MoveTowards } from '../Managers/Helper';
@@ -18,7 +18,11 @@ export class SpawnBase extends Component{
     @property({ type: PlayMode })
     spawnControl: PlayMode;
     
-    spawnHealth: HealthSystem = new HealthSystem();
+    @property(HealthSystem)
+    spawnHealth: HealthSystem;
+
+    @property(Node)
+    spawnNode: Node;
 
     currentState: ISpawnState;
     idleState: ISpawnState = new IdleState();
@@ -39,7 +43,18 @@ export class SpawnBase extends Component{
     isDead: boolean = false;
     
     start() {
+        
+        // if (this.node.hasEventListener("",this.onBeginContact,this.node)) {
+        //     console.log("touched");
+        //    
+        let collider = this.getComponent(PolygonCollider2D);
+        if (collider) {
+            collider.on(Contact2DType.BEGIN_CONTACT, () => {
+                this.onBeginContact()
+            }, this);
+        }
         this.init();
+        
     }
     init() {
         this.movingState.EnterState(this);
@@ -47,8 +62,13 @@ export class SpawnBase extends Component{
     }
 
     update(deltaTime: number) {
+
         if (this.currentState == this.movingState)
             this.Move(deltaTime)
+    }
+
+    onBeginContact() {
+        console.log("Reached");
     }
 
     Move(deltaTime: number) {
@@ -62,7 +82,6 @@ export class SpawnBase extends Component{
         }
 
     }
-
     MoveToward(targetPos: Vec3) {
         if (this.isDead == true) {
             this.deadState.EnterState(this);
@@ -73,8 +92,17 @@ export class SpawnBase extends Component{
         }
         this.targetLocation = targetPos.clone();
     }
-
-    Attack(spawnToAttack) {
-        
+    Attack(spawnToAttack: SpawnBase) {
+        if (spawnToAttack.isDead) {
+            this.currentState.SwitchState(this, this.idleState);
+            return;
+        }
+        if (this.spawnHealth.currentHp<=this.spawnHealth.minHp) {
+            this.currentState.SwitchState(this, this.deadState)
+        }
+        let amount=Math.floor(Math.random() * (20 - 5 + 4) + 5);
+        spawnToAttack.spawnHealth.ReduceHealth(amount);
     }
+
+    CloseToEnemy
 }

@@ -5,8 +5,11 @@ const { ccclass, property } = _decorator;
 
 export class AttackingState extends ISpawnState{
 
-    UpdateState(spawn: SpawnBase): void {
+    UpdateState(spawn: SpawnBase):void{
         
+    }
+    UpdateAttackState(spawn: SpawnBase, spawnToAttack: SpawnBase) {
+        spawn.Attack(spawnToAttack);
     }
 
     OnCollision(spawn: SpawnBase): void {

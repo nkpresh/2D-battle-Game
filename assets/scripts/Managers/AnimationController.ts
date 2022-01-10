@@ -1,15 +1,11 @@
 
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, Skeleton } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('AnimationController')
-export class AnimationController extends Component {
+export class AnimationController {
 
-    start () {
-        
-    }
-
-    update (deltaTime: number) {
+    CreateAnimation(spawn:Skeleton,animationName:string) {
         
     }
 }

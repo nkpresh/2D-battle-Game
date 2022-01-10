@@ -8,8 +8,7 @@ const { ccclass, property } = _decorator;
 @ccclass('BattleManager')
 export class BattleManager extends Component {
 
-    // @property(Sprite)
-    // battleGround: Sprite;
+    // playerSpawns:SpawnBase[]=new Array 
 
     @property(Node)
     playerShip: Node;
