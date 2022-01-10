@@ -7,7 +7,6 @@ import { LivingEntity } from '../LivingEntity';
 
 const { ccclass, property } = _decorator;
 
-//this is my Context
 Enum(PlayMode)
 @ccclass('SpawnBase')
 export class SpawnBase extends LivingEntity{
@@ -21,11 +20,7 @@ export class SpawnBase extends LivingEntity{
     startLocation: Vec3;
     currentLocation: Vec3;
 
-    playMode: PlayMode;
-
     spawnState: SpawnState;
-
-    isDead: boolean = false;
     
     start() {
         this.init();
@@ -66,15 +61,5 @@ export class SpawnBase extends LivingEntity{
         }
         this.target = targetPos.clone();
     }
-    Attack(spawnToAttack: SpawnBase) {
-        if (spawnToAttack.isDead) {
-            this.currentState.SwitchState(this, this.idleState);
-            return;
-        }
-        if (this.spawnHealth.currentHp<=this.spawnHealth.minHp) {
-            this.currentState.SwitchState(this, this.deadState)
-        }
-        let amount=Math.floor(Math.random() * (20 - 5 + 4) + 5);
-        spawnToAttack.spawnHealth.ReduceHealth(amount);
-    }
+
 }

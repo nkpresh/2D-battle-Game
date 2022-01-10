@@ -1,14 +1,15 @@
 import { _decorator, Component, Node } from 'cc';
+import { LivingEntity } from '../Components/LivingEntity';
 import { SpawnBase } from '../Components/Spawns/SpawnBase';
-import { ISpawnState } from './ISpawnState';
+import { IEntityState } from './IEntityState';
 const { ccclass, property } = _decorator;
 
-export class IdleState extends ISpawnState{
+export class IdleState extends IEntityState{
 
-    UpdateState(spawn: SpawnBase): void {
+    UpdateState(spawn: LivingEntity): void {
         
     }
-    OnCollision(spawn: SpawnBase): void {
+    OnCollision(spawn: LivingEntity): void {
         
     }
 }

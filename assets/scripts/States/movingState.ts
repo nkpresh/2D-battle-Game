@@ -1,11 +1,11 @@
 import { _decorator, Component, Node } from 'cc';
 import { BattleManager } from '../Managers/BattleManager';
 import { SpawnBase } from '../Components/Spawns/SpawnBase';
-import { ISpawnState } from './ISpawnState';
+import { IEntityState } from './IEntityState';
 import { LivingEntity } from '../Components/LivingEntity';
 const { ccclass, property } = _decorator;
 
-export class MovingState extends ISpawnState{
+export class MovingState extends IEntityState{
 
     UpdateState(spawn: SpawnBase) {
         BattleManager.instance.CreateTarget(spawn);
