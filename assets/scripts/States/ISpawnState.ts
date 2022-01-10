@@ -1,6 +1,6 @@
 
 import { _decorator, Component, Node } from 'cc';
-import { SpawnBase } from '../Spawns/SpawnBase';
+import { SpawnBase } from '../Components/Spawns/SpawnBase';
 const { ccclass, property } = _decorator;
 
 //this is my abstract state

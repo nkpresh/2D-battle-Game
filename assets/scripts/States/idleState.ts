@@ -1,5 +1,5 @@
 import { _decorator, Component, Node } from 'cc';
-import { SpawnBase } from '../Spawns/SpawnBase';
+import { SpawnBase } from '../Components/Spawns/SpawnBase';
 import { ISpawnState } from './ISpawnState';
 const { ccclass, property } = _decorator;
 

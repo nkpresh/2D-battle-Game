@@ -1,6 +1,7 @@
 
 import { _decorator, Component, Node, Sprite } from 'cc';
-import { SpawnBase } from '../Spawns/SpawnBase';
+import { LivingEntity } from '../Components/LivingEntity';
+import { SpawnBase } from '../Components/Spawns/SpawnBase';
 import { PlayMode } from './Enums';
 
 const { ccclass, property } = _decorator;
@@ -8,7 +9,7 @@ const { ccclass, property } = _decorator;
 @ccclass('BattleManager')
 export class BattleManager extends Component {
 
-    // playerSpawns:SpawnBase[]=new Array 
+    playerSpawns: SpawnBase[] = new Array<SpawnBase>(); 
 
     @property(Node)
     playerShip: Node;
@@ -29,13 +30,12 @@ export class BattleManager extends Component {
         
     }
 
-    CreateTarget(spawn: SpawnBase) {
+    CreateTarget(spawn: LivingEntity) {
         if (spawn.spawnControl == PlayMode.Player) {
-            spawn.targetLocation = this.aiShip.worldPosition;
+            spawn.target = this.aiShip.worldPosition;
         } else if (spawn.spawnControl == PlayMode.AI) {
-            spawn.targetLocation = this.playerShip.worldPosition;
+            spawn.target = this.playerShip.worldPosition;
         }
-        // spawn.movingState.EnterState(spawn);
     }
     
 }
