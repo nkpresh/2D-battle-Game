@@ -1,10 +1,10 @@
 import { _decorator, Component, Node } from 'cc';
 import { LivingEntity } from '../Components/LivingEntity';
 import { SpawnBase } from '../Components/Spawns/SpawnBase';
-import { IEntityState } from './IEntityState';
+import { EntityState } from './IEntityState';
 const { ccclass, property } = _decorator;
 
-export class DeadState extends IEntityState{
+export class DeadState extends EntityState{
 
     UpdateState(spawn: LivingEntity): void {
         spawn.isDead = true;

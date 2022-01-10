@@ -5,7 +5,7 @@ import { PlayMode } from '../Managers/Enums';
 import { AttackingState } from '../States/AttackingState';
 import { DeadState } from '../States/DeadState';
 import { IdleState } from '../States/IdleState';
-import { IEntityState } from '../States/IEntityState';
+import { EntityState } from '../States/IEntityState';
 import { MovingState } from '../States/MovingState';
 
 const { ccclass, property } = _decorator;
@@ -18,11 +18,11 @@ export class LivingEntity extends Component {
 
     target: Vec3;
 
-    currentState: IEntityState;
-    idleState: IEntityState = new IdleState();
-    movingState: IEntityState = new MovingState();
-    attackingState: IEntityState = new AttackingState();
-    deadState: IEntityState = new DeadState();
+    currentState: EntityState;
+    idleState: EntityState = new IdleState();
+    movingState: EntityState = new MovingState();
+    attackingState: EntityState = new AttackingState();
+    deadState: EntityState = new DeadState();
     
     @property(HealthSystem)
     entityHealth: HealthSystem;

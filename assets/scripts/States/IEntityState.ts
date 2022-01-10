@@ -4,7 +4,7 @@ import { LivingEntity } from '../Components/LivingEntity';
 const { ccclass, property } = _decorator;
 
 //this is my abstract state
-export abstract class IEntityState {
+export abstract class EntityState {
     
     EnterState(entity: LivingEntity) {
         entity.currentState = this
@@ -14,11 +14,11 @@ export abstract class IEntityState {
     
     abstract OnCollision(spawn: LivingEntity);
 
-    SwitchState(entity: LivingEntity, newState: IEntityState) {
+    SwitchState(entity: LivingEntity, newState: EntityState) {
         newState.EnterState(entity);
     }
 
-    NextState(entity: LivingEntity) {
+    EnemyInRange(entity: LivingEntity) {
         
     }
 }
