@@ -8,6 +8,7 @@ export class CyberElephant extends SpawnBase {
 
     start() {
         super.start();
+        this.prefabLocation = 'Prefabs/Spawns/cyberElephant';
         
     }
 

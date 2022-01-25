@@ -17,6 +17,7 @@ export class LivingEntity extends Component {
     isDead: boolean = false;
 
     target: Vec3;
+    currentLocation: Vec3;
 
     currentState: EntityState;
     idleState: EntityState = new IdleState();

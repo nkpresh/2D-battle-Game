@@ -18,7 +18,6 @@ export class SpawnBase extends LivingEntity{
     prefabLocation: string= "Prefabs/Spawns/cyberElephant";
     movementSpeed: number = 200;
     startLocation: Vec3;
-    currentLocation: Vec3;
 
     spawnState: SpawnState;
     
@@ -26,14 +25,16 @@ export class SpawnBase extends LivingEntity{
         this.init();
     }
     init() {
-        this.movingState.EnterState(this);
-        this.movingState.UpdateState(this);
+        this.currentState = this.idleState;
+        this.currentLocation = this.node.worldPosition.clone();
+        this.target = this.currentLocation;
     }
 
     update(deltaTime: number) {
 
-        if (this.currentState == this.movingState)
-            this.Move(deltaTime)
+        if (this.currentState == this.movingState) {
+            // this.Move(deltaTime);
+        }
     }
 
     onBeginContact() {

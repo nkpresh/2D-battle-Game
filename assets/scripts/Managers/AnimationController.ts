@@ -1,11 +1,23 @@
 
 import { _decorator, Component, Node, Skeleton } from 'cc';
+import { SpawnBase } from '../Components/Spawns/SpawnBase';
 const { ccclass, property } = _decorator;
 
 @ccclass('AnimationController')
-export class AnimationController {
+export class AnimationController extends Component {
 
-    CreateAnimation(spawn:Skeleton,animationName:string) {
+    @property(SpawnBase)
+    spawn: SpawnBase
+    
+    
+    start() {
+        
+    }
+    update(deltaTime: number) {
+        
+    }
+
+    playAnimation(spawn:Skeleton,animationName:string) {
         
     }
 }

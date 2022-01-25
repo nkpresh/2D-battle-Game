@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, Vec3 } from 'cc';
 import { LivingEntity } from '../Components/LivingEntity';
 const { ccclass, property } = _decorator;
 
@@ -18,7 +18,10 @@ export abstract class EntityState {
         newState.EnterState(entity);
     }
 
-    EnemyInRange(entity: LivingEntity) {
-        
+    EnemyInRange(entity: LivingEntity,enemy:LivingEntity) {
+        let dist = Vec3.distance(entity.currentLocation,enemy.currentLocation)
+        if (dist <= 0) {
+            console.log("reached");
+        }
     }
 }

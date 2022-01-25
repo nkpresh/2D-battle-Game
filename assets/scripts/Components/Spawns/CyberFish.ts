@@ -8,7 +8,7 @@ export class CyberFish extends SpawnBase {
 
     start() {
         super.start();
-        
+        this.prefabLocation = 'Prefabs/Spawns/cyberFish';
     }
 
     update (deltaTime: number) {

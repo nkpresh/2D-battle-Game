@@ -8,7 +8,7 @@ export class CyberOctopus extends SpawnBase {
 
     start() {
         super.start();
-        
+        this.prefabLocation = 'Prefabs/Spawns/cyberOctopus';
     }
 
     update (deltaTime: number) {

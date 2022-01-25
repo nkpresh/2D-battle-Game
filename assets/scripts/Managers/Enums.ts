@@ -13,3 +13,9 @@ export enum PlayMode{
     AI,
     Player,
 }
+
+export enum spawnTpye{
+    Elephant,
+    Fish,
+    Octopus
+}

@@ -8,7 +8,7 @@ const { ccclass, property } = _decorator;
 export class MovingState extends EntityState{
 
     UpdateState(spawn: SpawnBase) {
-        BattleManager.instance.CreateTarget(spawn);
+        // BattleManager.instance.CreateTarget(spawn);
         spawn.MoveToward(spawn.target)
     }
     OnCollision(spawn: LivingEntity) {
